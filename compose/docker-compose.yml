@@ -3,7 +3,7 @@ networks:
   deduplication-network:
     driver: bridge
     driver_opts:
-      com.docker.network.enable_ipv6: "true"
+        com.docker.network.enable_ipv6: "true"
 volumes:
   mongodb:
     driver: local
@@ -192,18 +192,6 @@ services:
       - "SearchPublisherConfiguration__QueueName=${RABBITMQ_SEARCH_DUPLICATES_QUEUE_NAME}"
       - "PublisherMessageBatchSize=${DEDUPLICATION_PUBLISHER_MESSAGE_BATCH_SIZE}"
       - "SearchPreparationPublisherConfiguration__QueueName=${RABBITMQ_PREPARE_DUPLICATES_QUEUE_NAME}"
-    networks:
-      - deduplication-network
-    depends_on:
-      - redis
-      - mongodb
-      - rabbitmq
-  deduplication-task-diagnostic-worker:
-    container_name: dd-deduplication-task-diagnostic-worker
-    image: bpmonline/dup-deduplication-task-diagnostic-worker:${DEDUPLICATION_TAG}
-    environment:
-      - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
-      - "MongoDbConfiguration__ConnectionString=${MONGODB_CONNECTION_STRING}"
     networks:
       - deduplication-network
     depends_on:
