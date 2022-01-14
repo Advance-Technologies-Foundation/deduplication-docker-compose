@@ -63,6 +63,9 @@ services:
       - "ConfirmationPublisherConfiguration__QueueName=${RABBITMQ_CONFIRMATION_DUPLICATES_QUEUE_NAME}"
       - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
       - "MongoDbConfiguration__ConnectionString=${MONGODB_CONNECTION_STRING}"
+      - "CacheProvider=${DATA_SERVICE_CACHE_PROVIDER}"
+      - "MongoDBCacheOptions__ConnectionString=${MONGODB_CONNECTION_STRING}"
+      - "MongoDBCacheOptions__DatabaseName=${MONGODB_CACHE_DATABASE_NAME}"
     networks:
       - deduplication-network
     depends_on:
