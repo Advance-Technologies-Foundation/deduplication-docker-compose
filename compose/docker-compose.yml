@@ -48,7 +48,7 @@ services:
       - deduplication-network
   data-service:
     container_name: dd-data-service
-    image: bpmonline/dup-data-service:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-data-service:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "RedisCacheOptions__InstanceName=${REDIS_CACHE_OPTIONS_INSTANCE_NAME}"
@@ -74,7 +74,7 @@ services:
       - rabbitmq
   web-api:
     container_name: dd-web-api
-    image: bpmonline/dup-web-api:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-web-api:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "RabbitConfiguration__RabbitMQUri=${RABBITMQ_URI}"
@@ -94,7 +94,7 @@ services:
       - rabbitmq
   duplicates-search-worker:
     container_name: dd-duplicates-search-worker
-    image: bpmonline/dup-duplicates-search-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-duplicates-search-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "RabbitConfiguration__RabbitMQUri=${RABBITMQ_URI}"
@@ -114,7 +114,7 @@ services:
       - rabbitmq
   duplicates-deletion-worker:
     container_name: dd-duplicates-deletion-worker
-    image: bpmonline/dup-duplicates-deletion-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-duplicates-deletion-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
@@ -132,7 +132,7 @@ services:
       - rabbitmq
   duplicates-confirmation-worker:
     container_name: dd-duplicates-confirmation-worker
-    image: bpmonline/dup-duplicates-confirmation-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-duplicates-confirmation-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
@@ -150,7 +150,7 @@ services:
       - rabbitmq
   duplicates-cleaner:
     container_name: dd-duplicates-cleaner
-    image: bpmonline/dup-duplicates-cleaner:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-duplicates-cleaner:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
@@ -168,7 +168,7 @@ services:
       - rabbitmq
   deduplication-task-worker:
     container_name: dd-deduplication-task-worker
-    image: bpmonline/dup-deduplication-task-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-deduplication-task-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "RabbitConfiguration__RabbitMQUri=${RABBITMQ_URI}"
@@ -192,7 +192,7 @@ services:
       - rabbitmq
   deduplication-preparation-worker:
     container_name: dd-deduplication-preparation-worker
-    image: bpmonline/dup-deduplication-preparation-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-deduplication-preparation-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "RabbitConfiguration__RabbitMQUri=${RABBITMQ_URI}"
@@ -214,7 +214,7 @@ services:
       - rabbitmq
   deduplication-task-diagnostic-worker:
     container_name: dd-deduplication-task-diagnostic-worker
-    image: bpmonline/dup-deduplication-task-diagnostic-worker:${DEDUPLICATION_TAG}
+    image: registry.creatio.com/dup-deduplication-task-diagnostic-worker:${DEDUPLICATION_TAG}
     restart: unless-stopped
     environment:
       - "MongoDbConfiguration__DatabaseName=${MONGODB_DB_NAME}"
